@@ -1,0 +1,41 @@
+class MascotaController {
+    constructor(mascotaService) {
+        this.mascotaService = mascotaService;
+    }
+    async getMascota(req, res){
+        const { page } = req.query;
+        let offset = 0;
+        let limit = 10;
+        if (page){
+            try{
+                offset = 3 * (page - 1);
+                const refugio = await this.mascotaService.getMascota(offset, limit);
+                res.status(200).json(mascota);
+            }
+            catch(e){
+                res.status(500).json("Error receiving");
+            }
+        } else{
+            try{
+                const mascota = await this.mascotaService.getMascota();
+                res.status(200).json(mascota);
+            }
+            catch(e) {
+                res.status(500).json("Error receiving");
+            }
+        }
+    }
+    
+    async getMascotaByEspecie(req, res) {
+        const { especie } = req.params;
+        try{
+            const mascota = await this.mascotaService.getMascotaByEspecie(especie);
+            res.status(200).json(mascota);
+        } catch(e){
+            res.status(500).json(e);
+        }
+    }
+}
+
+
+module.exports = MascotaController;
