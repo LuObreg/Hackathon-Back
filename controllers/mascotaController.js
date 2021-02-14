@@ -35,6 +35,16 @@ class MascotaController {
             res.status(500).json(e);
         }
     }
+    async getMascotaByStatus(req, res){
+        const { status } = req.params;
+        try{
+            const mascota = await this.mascotaService.getMascotaByStatus(status);
+            res.status(200).json(mascota);
+        }
+        catch(e) {
+            res.status(500).json(e);
+        }
+    }
 }
 
 

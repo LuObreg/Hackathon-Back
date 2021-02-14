@@ -6,7 +6,11 @@ class MascotaService {
         return query;
     }
     getMascotaByEspecie(especie){
-        const query = MascotaModel.find({ _id: id }).exec();
+        const query = MascotaModel.find({ especie: especie }).exec();
+        return query;
+    }
+    getMascotaByStatus(status){
+        const query = MascotaModel.find({ status: status }).exec();
         return query;
     }
 }
