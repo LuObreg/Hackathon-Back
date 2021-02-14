@@ -45,6 +45,16 @@ class MascotaController {
             res.status(500).json(e);
         }
     }
+    async getMascotaByRefugio(req, res){
+        const { refugio_id } = req.params;
+        try{
+            const mascota = await this.mascotaService.getMascotaByRefugio(refugio_id);
+            res.status(200).json(mascota);
+        }
+        catch(e){
+            res.status(500).json(e);
+        }
+    }
 }
 
 

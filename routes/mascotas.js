@@ -14,5 +14,8 @@ MascotaInstance.getMascotaByEspecie(req, res);
 router.get("/:status", (req, res) => {
     MascotaInstance.getMascotaByStatus(req, res);
 });
+router.get(":refugio_id", (req, res) => {
+    MascotaInstance.getMascotaByRefugio(req, res);
+});
 
 module.exports = router;

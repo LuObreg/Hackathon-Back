@@ -13,6 +13,10 @@ class MascotaService {
         const query = MascotaModel.find({ status: status }).exec();
         return query;
     }
+    getMascotaByRefugio(refugio_id){
+        const query = MascotaMode.find({ refugio_id: refugio_id}).exec();
+        return query
+    }
 }
 
 module.exports = MascotaService;
