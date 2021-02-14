@@ -9,7 +9,7 @@ class MascotaController {
         if (page){
             try{
                 offset = 3 * (page - 1);
-                const refugio = await this.mascotaService.getMascota(offset, limit);
+                const mascota = await this.mascotaService.getMascota(offset, limit);
                 res.status(200).json(mascota);
             }
             catch(e){
