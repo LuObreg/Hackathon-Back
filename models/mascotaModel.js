@@ -22,9 +22,10 @@ const mascotaSchema = mongoose.Schema({
     required: true,
   },
   refugio_id: {
-    type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Refugio",
     required: true,
-  },
+  }
 });
 
 module.exports = mongoose.model("Mascota", mascotaSchema);
