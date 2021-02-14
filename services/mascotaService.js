@@ -1,7 +1,7 @@
 const MascotaModel = require("../models/mascotaModel");
 
 class MascotaService {
-    getmascota(page, limit) {
+    getMascota(page, limit) {
         const query = MascotaModel.find().skip(page).limit(limit).exec();
         return query;
     }
