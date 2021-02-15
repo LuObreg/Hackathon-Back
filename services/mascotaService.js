@@ -6,8 +6,8 @@ class MascotaService {
     return query;
   }
 
-  getMascotaByRefugio(refugio) {
-    const query = MascotaModel.find({ _refugio: refugio }).exec();
+  getMascotaByRefugio(id) {
+    const query = MascotaModel.find({ refugio: id }).exec();
     return query;
   }
 

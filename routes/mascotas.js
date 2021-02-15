@@ -16,7 +16,7 @@ router.get("/status/:status", (req, res) => {
   MascotaInstance.getMascotaByStatus(req, res);
 });
 
-router.get("/refugio/:name", (req, res) => {
+router.get("/refugio/:id", (req, res) => {
   MascotaInstance.getMascotaByRefugio(req, res);
 });
 

@@ -9,10 +9,6 @@ router.get("/", (req, res) => {
   RefugioInstance.getRefugio(req, res);
 });
 
-router.get("/:name", (req, res) => {
-  RefugioInstance.getRefugioByName(req, res);
-});
-
 router.get("/id/:id", (req, res) => {
   RefugioInstance.getRefugioById(req, res);
 });

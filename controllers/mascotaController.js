@@ -46,9 +46,10 @@ class MascotaController {
   }
 
   async getMascotaByRefugio(req, res) {
-    const { refugio } = req.params;
+    const { id } = req.params;
+    console.log(id)
     try {
-      const mascota = await this.mascotaService.getMascotaByRefugio(refugio);
+      const mascota = await this.mascotaService.getMascotaByRefugio(id);
       res.status(200).json(mascota);
     } catch (e) {
       res.status(500).json(e);

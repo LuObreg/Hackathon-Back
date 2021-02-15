@@ -26,35 +26,25 @@ class RefugioController {
     }
   }
 
-  async getRefugioByName(req, res) {
-    const { name } = req.params;
-
+  async getRefugioById(req, res) {
+    const { id } = req.params;
     try {
-      const getRefugio = await this.refugioService.getRefugioByName(name);
-      const getMascota = await this.mascotaService.getMascotaByRefugio(getRefugio.name);
-
-      const refugio = getRefugio[0]["nombre"];
-      const mascotas = getMascota.map((pet) => {
+      const getRefugio = await this.refugioService.getRefugioById(id);
+      const refugioId = getRefugio[0]["_id"];
+      const refugio = getRefugio[0]["nombre"];      
+      const getMascota = await this.mascotaService.getMascotaByRefugio(refugioId);
+      
+      const mascotas = getMascota.map((mascotas) => {
         const dataPet = 
           {
-            mascota: pet.nombre,
-            status: pet.status,
-            sexo: pet.sexo,
-            especie: pet.especie,
+            mascota: mascotas.nombre,
+            status: mascotas.status,
+            sexo: mascotas.sexo,
+            especie: mascotas.especie,
           }
         return dataPet;
       });
       res.status(200).json({refugio, mascotas});
-    } catch (e) {
-      res.status(500).json(e);
-    }
-  }
-
-  async getRefugioById(req, res) {
-    const { id } = req.params;
-    try {
-      const refugio = await this.refugioService.getRefugioById(id);
-      res.status(200).json(refugio);
     } catch (e) {
       res.status(500).json(e);
     }
