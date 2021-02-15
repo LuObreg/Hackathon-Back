@@ -9,6 +9,10 @@ class RefugioService {
     const query = RefugioModel.find({ _id: id }).exec();
     return query;
   }
+  getRefugioByName(refugio) {
+    const query = RefugioModel.find({nombre : refugio}).exec();
+    return query;
+  }
   postRefugio(Refugio) {
     const newRefugio = new RefugioModel(Refugio);
     return newRefugio.save();

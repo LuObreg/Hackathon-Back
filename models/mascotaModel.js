@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-const mascotaSchema = mongoose.Schema({
+const mascotaSchema = new mongoose.Schema({
   nombre: {
     type: String,
     required: true,
   },
   sexo: {
-    type: Number,
+    type: String,
     required: true,
   },
   status: {
@@ -21,11 +21,10 @@ const mascotaSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  refugio_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Refugio",
+  refugio: {
+    type: String,
     required: true,
-  }
+  },
 });
 
 module.exports = mongoose.model("Mascota", mascotaSchema);

@@ -1,6 +1,7 @@
 class RefugioController {
-  constructor(refugioService) {
+  constructor(refugioService, mascotaService) {
     this.refugioService = refugioService;
+    this.mascotaService = mascotaService;
   }
 
   async getRefugio(req, res) {
@@ -25,6 +26,28 @@ class RefugioController {
     }
   }
 
+  async getRefugioByName(req, res) {
+    const { name } = req.params;
+
+    try {
+      const refugio = await this.refugioService.getRefugioByName(name);
+      const mascota = await this.mascotaService.getMascotaByRefugio(refugio.name);
+      
+      const pet = mascota.map((pet) => {
+        const data = {
+          refugio: refugio[0]["nombre"],
+          mascota: pet.nombre,
+          sexo: pet.sexo,
+          especie: pet.especie,
+        };
+        return data;
+      });
+      res.status(200).json(pet);
+    } catch (e) {
+      res.status(500).json(e);
+    }
+  }
+
   async getRefugioById(req, res) {
     const { id } = req.params;
     try {
@@ -36,9 +59,25 @@ class RefugioController {
   }
 
   async postRefugio(req, res) {
-    const { nombre,whatsapp,url_donar,direccion,ciudad,instagram, image } = req.body;
+    const {
+      nombre,
+      whatsapp,
+      url_donar,
+      direccion,
+      ciudad,
+      instagram,
+      image,
+    } = req.body;
 
-    if(nombre && whatsapp && url_donar && direccion && ciudad && instagram && image ) {
+    if (
+      nombre &&
+      whatsapp &&
+      url_donar &&
+      direccion &&
+      ciudad &&
+      instagram &&
+      image
+    ) {
       const refugio = {
         nombre: nombre,
         whatsapp: whatsapp,
@@ -52,12 +91,12 @@ class RefugioController {
         await this.refugioService.postRefugio(refugio);
         res.status(200).json("Refugio agregado con exito!");
       } catch (error) {
-        console.log(error)
-        res.status(500).send("Ocurrio un error al agregar un refugio!");      
+        console.log(error);
+        res.status(500).send("Ocurrio un error al agregar un refugio!");
       }
     } else {
-      res.status(400).json("Todos los campos son obligatorios")
-    }    
+      res.status(400).json("Todos los campos son obligatorios");
+    }
   }
 }
 
