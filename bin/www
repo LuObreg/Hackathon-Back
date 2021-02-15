@@ -16,16 +16,16 @@ const mongoose = require("mongoose");
 const port = normalizePort(process.env.PORT || '4000');
 app.set('port', port);
 
-// mongoose.connect("mongodb+srv://admin_maskoto:h4ckm4sk0tO@maskoto.4c7ix.mongodb.net/maskotodb?retryWrites=true&w=majority",{
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-//   useFindAndModify: false
-// });
-
-mongoose.connect("mongodb://localhost:27017/Maskoto-Api",{
+mongoose.connect("mongodb+srv://admin_maskoto:h4ckm4sk0tO@maskoto.4c7ix.mongodb.net/maskotodb?retryWrites=true&w=majority",{
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
+
+// mongoose.connect("mongodb://localhost:27017/Maskoto-Api",{
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true
+// });
 
 //la pass es h4ckm4sk0tO
 
