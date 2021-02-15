@@ -21,3 +21,6 @@ router.get("/refugio/:name", (req, res) => {
 });
 
 module.exports = router;
+
+
+

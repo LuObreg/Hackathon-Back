@@ -37,6 +37,7 @@ class RefugioController {
         const data = {
           refugio: refugio[0]["nombre"],
           mascota: pet.nombre,
+          status: pet.status,
           sexo: pet.sexo,
           especie: pet.especie,
         };
