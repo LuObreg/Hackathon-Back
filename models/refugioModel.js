@@ -29,10 +29,6 @@ const refugioSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  mascotas: {
-    type: Array,
-    required: false,
-  }
 });
 
 module.exports = mongoose.model("Refugio", refugioSchema);
