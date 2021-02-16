@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const RefugioService = require("../services/refugioService")
 const MascotaController = require("../controllers/mascotaController");
 const MascotaService = require("../services/mascotaService");
-const MascotaInstance = new MascotaController(new MascotaService());
+const MascotaInstance = new MascotaController(new MascotaService(),new RefugioService());
 
 router.get("/", (req, res) => {
   MascotaInstance.getMascota(req, res);

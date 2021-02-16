@@ -5,8 +5,7 @@ class MascotaService {
     const query = MascotaModel.find().skip(page).limit(limit).exec();
     return query;
   }
-
-  getMascotaByRefugio(id) {
+  getMascotaByRefugio(id) { 
     const query = MascotaModel.find({ refugio: id }).exec();
     return query;
   }

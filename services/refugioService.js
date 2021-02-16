@@ -6,7 +6,7 @@ class RefugioService {
     return query;
   }
   getRefugioById(id) {
-    const query = RefugioModel.find({ _id: id }).exec();
+    const query = RefugioModel.findOne({ _id: id }).exec();
     return query;
   }
   postRefugio(Refugio) {

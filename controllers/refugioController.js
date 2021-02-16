@@ -30,17 +30,16 @@ class RefugioController {
     const { id } = req.params;
     try {
       const getRefugio = await this.refugioService.getRefugioById(id);
-      const refugioId = getRefugio[0]["_id"];
-      const refugio = getRefugio[0]["nombre"];      
-      const getMascota = await this.mascotaService.getMascotaByRefugio(refugioId);
-      
-      const mascotas = getMascota.map((mascotas) => {
+      const refugio = getRefugio.nombre;
+      const getMascota = await this.mascotaService.getMascotaByRefugio(getRefugio.id);
+      console.log(refugio)
+      const mascotas = getMascota.map(({ nombre, status, sexo, especie }) => {
         const dataPet = 
           {
-            mascota: mascotas.nombre,
-            status: mascotas.status,
-            sexo: mascotas.sexo,
-            especie: mascotas.especie,
+            mascota: nombre,
+            status: status,
+            sexo: sexo,
+            especie: especie,
           }
         return dataPet;
       });

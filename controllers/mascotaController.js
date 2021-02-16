@@ -1,8 +1,8 @@
 class MascotaController {
-  constructor(mascotaService) {
+  constructor(mascotaService, refugioService) {
     this.mascotaService = mascotaService;
   }
-    
+
   async getMascota(req, res) {
     const { page } = req.query;
     let offset = 0;
@@ -47,7 +47,7 @@ class MascotaController {
 
   async getMascotaByRefugio(req, res) {
     const { id } = req.params;
-    console.log(id)
+    console.log(id);
     try {
       const mascota = await this.mascotaService.getMascotaByRefugio(id);
       res.status(200).json(mascota);
